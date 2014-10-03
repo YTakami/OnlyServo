@@ -39,7 +39,7 @@ exports.pulse = function(){
     
 }
 */
-exports.pulse221 = function(pw){
+exports.pulse1 = function(pw){
 
 	pulseWidth = pw;
 	repeat = pwmFrequency - pw;
@@ -50,7 +50,7 @@ exports.pulse221 = function(pw){
     sensorUtils.udelay(repeat * 1000);
     
 }
-exports.pulse222 = function(pw){
+exports.pulse2 = function(pw){
 
 	pulseWidth = pw;
 	repeat = pwmFrequency - pw;

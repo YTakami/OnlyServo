@@ -1,7 +1,9 @@
 // KPR Script file
 var pwmFrequency = 20;
-var pulseWidth = 1.1;
-var pulse2 = 1.87;
+//pulsewidth
+//it will stop on 1.3(1300ms)
+var pulse1 = 1.1;
+var pulse2 = 2.0;
 var repeat = pwmFrequency - pulseWidth;
 
 /*
@@ -35,15 +37,16 @@ Panel.prototype = Object.create(Object.prototype, {
 		value: function(p) {
 			if(!servostate){
 				servostate = true;
-				//pulseWidth = 1.1;
                 //p.interval = pwmFrequency - pulseWidth;
                 p.interval = 3000;//the interval to call onTimeChanged function
                 p.start();
                 rotate = true;
                 p.first.string = "rotating";
+                //100*20ms = 2000ms
+				//change it according to interval
                 for(var x=0;x<100;x++){
-            		application.invoke(new MessageWithObject("pins:/motor/pulse221", pulseWidth));
-            		application.invoke(new MessageWithObject("pins:/motor/pulse222", pulse2));
+            		application.invoke(new MessageWithObject("pins:/motor/pulse1", pulse1));
+            		application.invoke(new MessageWithObject("pins:/motor/pulse2", pulse2));
             	}
             }
             else{
@@ -52,8 +55,8 @@ Panel.prototype = Object.create(Object.prototype, {
                 p.stop();
                 p.first.string = "stop";
                 for(var x=0;x<50;x++){
-            		application.invoke(new MessageWithObject("pins:/motor/pulse221", 1.3));
-            		application.invoke(new MessageWithObject("pins:/motor/pulse222", 1.3));
+            		application.invoke(new MessageWithObject("pins:/motor/pulse1", 1.3));
+            		application.invoke(new MessageWithObject("pins:/motor/pulse2", 1.3));
             	}
             }
 		}
